@@ -1,0 +1,22 @@
+{
+  "id": "alternative-death-t20",
+  "title": "Alternative Death T20",
+  "url": "https://github.com/Isaias-Alves/Alternative-Death-T20-Foundry",
+  "description": "Módulo para Foundry VTT que implementa o sistema de morte alternativa T20.",
+  "version": "1.0.0",
+  "library": "false",
+  "manifest": "https://raw.githubusercontent.com/Isaias-Alves/Alternative-Death-T20-Foundry/main/module.json",
+  "download": "https://github.com/Isaias-Alves/Alternative-Death-T20-Foundry/releases/latest/download/module.zip",
+  "authors": [
+    {
+      "name": "Isaias Alves(Liberta)",
+      "url": "https://github.com/Isaias-Alves"
+    }
+  ],
+  "scripts": ["scripts/main.js"],
+  "styles": ["styles/style.css"],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  }
+}
