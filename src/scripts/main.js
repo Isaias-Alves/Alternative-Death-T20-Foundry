@@ -75,13 +75,13 @@ async function realizarTesteConstituicaoMoribundo(actor) {
   if (roll.total < cdAtual) {
     ui.notifications.warn(`${actor.name} falhou no teste de Moribundo!`);
     let lesoesAtuais =
-      getProperty(actor, "system.resources.recurso1.value") || 0;
-    await actor.update({ "system.resources.recurso1.value": lesoesAtuais + 1 });
+      getProperty(actor, "system.resources.primary.value") || 0;
+    await actor.update({ "system.resources.primary.value": lesoesAtuais + 1 });
   }
 }
 
 Hooks.on("renderActorSheet", (app, html, data) => {
-  const recursoLesao = html.find('[name="system.resources.recurso1.value"]');
+  const recursoLesao = html.find('[name="system.resources.primary.value"]');
   if (recursoLesao.length) {
     recursoLesao.css({
       "background-color": "rgba(255, 0, 0, 0.2)",
@@ -92,7 +92,7 @@ Hooks.on("renderActorSheet", (app, html, data) => {
 });
 
 Hooks.on("applyActiveEffects", (actor) => {
-  const numLesoes = getProperty(actor, "system.resources.recurso1.value") || 0;
+  const numLesoes = getProperty(actor, "system.resources.primary.value") || 0;
 
   if (numLesoes > 0) {
     const penalidade = numLesoes * -2;
