@@ -80,31 +80,23 @@ async function realizarTesteConstituicaoMoribundo(actor) {
   }
 }
 
-Hooks.on("renderActorSheet", (app, html, data) => {
-  const recursoLesao = html.find('[name="system.resources.primary.value"]');
-  if (recursoLesao.length) {
-    recursoLesao.css({
-      "background-color": "rgba(255, 0, 0, 0.2)",
-      border: "1px solid red",
-    });
-    recursoLesao.attr("title", "Lesões (Regra Alternativa)");
-  }
-});
-
 Hooks.on("applyActiveEffects", (actor) => {
   const numLesoes = getProperty(actor, "system.resources.primary.value") || 0;
 
   if (numLesoes > 0) {
-    const penalidade = numLesoes * -2;
-
+    const penalidade = (numLesoes * -2).toString();
     const pericias = actor.system.pericias;
 
     if (pericias) {
       for (let key in pericias) {
         const pericia = pericias[key];
 
-        if (pericia && typeof pericia === "object") {
-          pericia.mod = (pericia.mod || 0) + penalidade;
+        if (pericia && pericia.bonus) {
+          pericia.bonus.push(penalidade);
+
+          if (typeof pericia.value === "number") {
+            pericia.value += parseInt(penalidade);
+          }
         }
       }
     }
