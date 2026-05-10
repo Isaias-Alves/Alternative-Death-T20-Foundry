@@ -96,9 +96,17 @@ Hooks.on("applyActiveEffects", (actor) => {
 
   if (numLesoes > 0) {
     const penalidade = numLesoes * -2;
-    actor.updateSource({
-      "system.attributes.pericias.all.mod":
-        (actor.system.attributes.pericias.*.mod || 0) + penalidade,
-    });
+
+    const pericias = actor.system.pericias;
+
+    if (pericias) {
+      for (let key in pericias) {
+        const pericia = pericias[key];
+
+        if (pericia && typeof pericia === "object") {
+          pericia.mod = (pericia.mod || 0) + penalidade;
+        }
+      }
+    }
   }
 });
