@@ -97,7 +97,7 @@ Hooks.on("applyActiveEffects", (actor) => {
   if (numLesoes > 0) {
     const penalidade = numLesoes * -2;
     actor.updateSource({
-      "system.attributes.pericias.*.mod":
+      "system.attributes.pericias.all.mod":
         (actor.system.attributes.pericias.*.mod || 0) + penalidade,
     });
   }
