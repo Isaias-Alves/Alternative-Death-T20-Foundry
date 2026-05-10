@@ -20,9 +20,9 @@
   "relationships": {
     "systems": [
       {
-        "id": "t20",
+        "id": "tormenta20",
         "type": "system",
-        "manifest": "https://raw.githubusercontent.com/jhow-p/t20/main/system.json"
+        "manifest": "https://gitlab.com/vizael/Tormenta20/-/raw/v1.5.015/system.json"
       }
     ]
   },
